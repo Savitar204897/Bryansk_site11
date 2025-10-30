@@ -1285,5 +1285,107 @@ body.music-page main {
     padding: 15px 8px;
   }
 }
+/* === ОСНОВНАЯ АДАПТИВНОСТЬ === */
+
+/* Общие стили */
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Шапка и навигация */
+header {
+  background: linear-gradient(to right, #003366, #0055aa);
+  color: white;
+  padding: 10px 0;
+  position: relative;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Меню */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Бургер (по умолчанию скрыт) */
+.burger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* === АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ === */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: #003366;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  .burger {
+    display: block;
+    color: white;
+  }
+
+  .search-container {
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .search-container input {
+    width: 80%;
+    border-radius: 8px 0 0 8px;
+  }
+
+  .search-container button {
+    border-radius: 0 8px 8px 0;
+  }
+
+  .welcome-block {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .welcome-image img {
+    width: 100%;
+    border-radius: 8px;
+  }
+}
+
 
 
