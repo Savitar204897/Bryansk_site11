@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Мероприятие — Ассоциация ветеранов</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="emblem.png" />
+
+  <style>
+    /* Слайд-шоу */
+    .article-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .article-image img {
+      width: 100%;
+      display: none;
+      transition: opacity 0.5s ease;
+      border-radius: 12px;
+    }
+    .article-image img.active {
+      display: block;
+    }
+    .prev-slide, .next-slide {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .prev-slide { left: 10px; }
+    .next-slide { right: 10px; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <a href="index.html" class="home-link">
+          <i class="fas fa-home"></i>
+          <span>На&nbsp;главную</span>
+        </a>
+      </div>
+      <nav id="navbar">
+        <ul>
+          <li><a href="news.html">Новости</a></li>
+          <li><a href="about.html">О ассоциации</a></li>
+          <li><a href="events.html" class="active">Мероприятия</a></li>
+          <li><a href="partners.html">Партнёры</a></li>
+          <li><a href="awards.html">Награды</a></li>
+        </ul>
+      </nav>
+
+      <div class="search-container">
+        <input id="searchInput" type="text" placeholder="Поиск..." />
+        <button id="searchBtn">🔍</button>
+        <ul id="searchSuggestions" class="suggestions"></ul>
+      </div>
+
+      <div class="burger" id="burger">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <!-- Гамбургер-меню -->
+      <div class="hamburger-menu" id="hamburgerMenu">
+        <div class="hamburger-icon" id="hamburgerIcon">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="hamburger-content" id="hamburgerContent">
+          <a href="literature.html">Литература</a>
+          <a href="music.html">Музыка</a>
+          <a href="news.html">Новости</a>
+          <a href="events.html">Мероприятия</a>
+          <a href="reports.html">Отчеты регионального отделения</a>
+          <a href="about.html">Информация для ветеранов</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:24px;">
+    <div id="eventContainer"></div>
+  </main>
+
+  <footer>
+    <div class="container footer-extra">
+      <p>© 2025 Ассоциация ветеранов. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ======== МЕРОПРИЯТИЯ (твои изображения) ========
+    const EVENTS_DATA = [
+      {
+        id: 1,
+        title: "День памяти героев России",
+        content: "<p>Полный отчёт с фото и участниками.</p>",
+        images: ["img/emblem.png", "img/event1-2.jpg", "img/emblem.png"]
+      },
+      {
+        id: 2,
+        title: "Волонтёрская акция «Помним!»",
+        content: "<p>Описание акции, результаты и благодарности.</p>",
+        images: ["img/event2-1.jpg", "img/event2-2.jpg"]
+      },
+      {
+        id: 3,
+        title: "Патриотический концерт",
+        content: "<p>Программа концерта и фото участников.</p>",
+        images: ["img/event3-1.jpg", "img/event3-2.jpg", "img/event3-3.jpg"]
+      },
+      {
+        id: 4,
+        title: "Открытие памятника героям",
+        content: "<p>Церемония открытия нового памятника героям войны.</p>",
+        images: ["img/event4-1.jpg"]
+      }
+    ];
+
+    // ======== Получаем id из URL ========
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id"));
+    const event = EVENTS_DATA.find(e => e.id === id);
+    const container = document.getElementById("eventContainer");
+
+    function escapeHtml(s){
+      return String(s).replace(/[&<>"']/g, c=>({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+      }[c]));
+    }
+
+    // ======== Вывод мероприятия ========
+    if(!event){
+      container.innerHTML = "<p>Мероприятие не найдено.</p>";
+    } else {
+      let imgsHtml = event.images.map(
+        (src,i)=>`<img src="${escapeHtml(src)}" class="${i===0?'active':''}" alt="${escapeHtml(event.title)}">`
+      ).join("");
+
+      container.innerHTML = `
+        <a href="#" class="btn btn-outline" id="backToEvents">&larr; Назад к мероприятиям</a>
+        <div class="article-wrapper">
+          <div class="article-image" id="articleImage">
+            ${imgsHtml}
+            ${event.images.length > 1 ? `
+              <button class="prev-slide">&#10094;</button>
+              <button class="next-slide">&#10095;</button>` : ""}
+          </div>
+          <div class="article-content">
+            <h1>${escapeHtml(event.title)}</h1>
+            <div class="article-body">${event.content}</div>
+          </div>
+        </div>
+      `;
+
+      // ======== Слайд-шоу ========
+      const imgs = document.querySelectorAll("#articleImage img");
+      if(imgs.length > 1){
+        const prevBtn = document.querySelector(".prev-slide");
+        const nextBtn = document.querySelector(".next-slide");
+        let current = 0;
+
+        function showSlide(n){
+          imgs[current].classList.remove("active");
+          current = (n + imgs.length) % imgs.length;
+          imgs[current].classList.add("active");
+        }
+
+        prevBtn.addEventListener("click", ()=>showSlide(current-1));
+        nextBtn.addEventListener("click", ()=>showSlide(current+1));
+        setInterval(()=>showSlide(current+1), 5000);
+      }
+    }
+
+    // ======== Возврат на events.html ========
+    document.addEventListener("click", (ev) => {
+      const t = ev.target;
+      if (t && t.id === "backToEvents") {
+        ev.preventDefault();
+        const savedPage = localStorage.getItem("eventsPage");
+        let url = "events.html";
+        if(savedPage){ url += `?page=${encodeURIComponent(savedPage)}`; }
+        window.location.href = url;
+      }
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

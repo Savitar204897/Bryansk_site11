@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Литература | Ассоциация ветеранов</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="emblem.png" />
+</head>
+<body class="literature-page">
+
+  <!-- ШАПКА -->
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <a href="index.html" class="home-link">
+          <i class="fas fa-home"></i>
+          <span>На&nbsp;главную</span>
+        </a>
+      </div>
+      <nav id="navbar">
+        <ul>
+          <li><a href="news.html">Новости</a></li>
+          <li><a href="about.html">О ассоциации</a></li>
+          <li><a href="events.html">Мероприятия</a></li>
+          <li><a href="partners.html">Партнёры</a></li>
+          <li><a href="awards.html">Награды</a></li>
+        </ul>
+      </nav>
+      <div class="search-container">
+        <input id="searchInput" type="text" placeholder="Поиск..." />
+        <button id="searchBtn">🔍</button>
+        <ul id="searchSuggestions" class="suggestions"></ul>
+      </div>
+      <!-- Гамбургер-меню с анимацией -->
+<div class="hamburger-menu" id="hamburgerMenu">
+  <div class="hamburger-icon" id="hamburgerIcon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="hamburger-content" id="hamburgerContent">
+    <a href="literature.html">Литература</a>
+    <a href="music.html">Музыка</a>
+    <a href="news.html">Новости</a>
+    <a href="events.html">Мероприятия</a>
+    <a href="reports.html">Отчеты регионального отделения</a>
+    <a href="about.html">Информация для ветеранов</a>
+  </div>
+</div>
+    </div>
+  </header>
+
+  <body class="literature-page">
+
+
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <main class="container">
+    <h1>Музыка для ветеранов и о Родине</h1>
+    <p>Ниже вы можете послушать или скачать песни военной тематики, посвященные ветеранам и защите Родины.</p>
+
+    <div class="music-grid">
+      <!-- Пример аудио-карточки -->
+      <div class="music-card">
+        <h3>Катюша</h3>
+        <audio controls>
+          <source src="audio/katyusha.mp3" type="audio/mpeg">
+          Ваш браузер не поддерживает аудио.
+        </audio>
+        <a href="audio/katyusha.mp3" download class="btn btn-outline">Скачать</a>
+      </div>
+
+      <div class="music-card">
+        <h3>Священная война</h3>
+        <audio controls>
+          <source src="audio/svyashennaya_voyna.mp3" type="audio/mpeg">
+          Ваш браузер не поддерживает аудио.
+        </audio>
+        <a href="audio/svyashennaya_voyna.mp3" download class="btn btn-outline">Скачать</a>
+      </div>
+
+      <div class="music-card">
+        <h3>Прощание славянки</h3>
+        <audio controls>
+          <source src="audio/proshchanie_slavyanki.mp3" type="audio/mpeg">
+          Ваш браузер не поддерживает аудио.
+        </audio>
+        <a href="audio/proshchanie_slavyanki.mp3" download class="btn btn-outline">Скачать</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ФУТЕР -->
+  <footer>
+    <div class="container footer-content">
+      <p>© 2025 Ассоциация ветеранов. Все права защищены.</p>
+      <div class="social-links"></div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

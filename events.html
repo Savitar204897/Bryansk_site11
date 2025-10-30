@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Мероприятия — Ассоциация ветеранов</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="emblem.png" />
+</head>
+<body>
+  <body class="events-page">
+
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <a href="index.html" class="home-link">
+          <i class="fas fa-home"></i>
+          <span>На&nbsp;главную</span>
+        </a>
+      </div>
+      <nav id="navbar">
+        <ul>
+          
+          <li><a href="news.html">Новости</a></li>
+          <li><a href="about.html">О ассоциации</a></li>
+          <li><a href="events.html" class="active">Мероприятия</a></li>
+          <li><a href="partners.html">Партнёры</a></li>
+          <li><a href="awards.html">Награды</a></li>
+        </ul>
+      </nav>
+      <div class="search-container">
+      <input id="searchInput" type="text" placeholder="Поиск..." />
+      <button id="searchBtn">🔍</button>
+      <ul id="searchSuggestions" class="suggestions"></ul>
+    </div>
+      <div class="burger" id="burger">☰</div>
+       <!-- Гамбургер-меню с анимацией -->
+<div class="hamburger-menu" id="hamburgerMenu">
+  <div class="hamburger-icon" id="hamburgerIcon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="hamburger-content" id="hamburgerContent">
+    <a href="literature.html">Литература</a>
+    <a href="music.html">Музыка</a>
+    <a href="news.html">Новости</a>
+    <a href="events.html">Мероприятия</a>
+    <a href="reports.html">Отчеты регионального отделения</a>
+    <a href="about.html">Информация для ветеранов</a>
+  </div>
+</div>
+    </div>
+  </header>
+
+  <div class="page-banner"></div>
+  <main class="container fade-in">
+    <h1>Наши мероприятия</h1>
+    <p>Ассоциация ветеранов активно проводит встречи, праздники и акции поддержки. Здесь вы можете увидеть недавние и будущие события.</p>
+
+    <div id="eventsContainer" class="events-grid"></div>
+    <div class="pagination fade-in" id="pagination"></div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>© 2025 Ассоциация ветеранов. Все права защищены.</p>
+      <div class="social-links">
+      </div>
+    </div>
+  </footer>
+
+  <!-- <script>
+    // ======= Данные мероприятий =======
+    const EVENTS_DATA = [
+      {id:1, title:"День памяти героев России", img:"https://picsum.photos/500/250?random=21", excerpt:"Торжественная церемония возложения цветов у мемориала.", content:"<p>Подробный отчёт с фотографиями и выступлениями участников.</p>"},
+      {id:2, title:"Волонтёрская акция «Помним!»", img:"https://picsum.photos/500/250?random=22", excerpt:"Совместная работа волонтёров и ветеранов по благоустройству памятных мест.", content:"<p>Описание программы, результаты и благодарности участникам.</p>"},
+      {id:3, title:"Патриотический концерт", img:"https://picsum.photos/500/250?random=23", excerpt:"Праздничный концерт, посвящённый Дню Победы.", content:"<p>Программа концерта, список исполнителей и фотоотчёт.</p>"},
+      {id:4, title:"Военно-полевые сборы", img:"https://picsum.photos/500/250?random=24", excerpt:"Учебные сборы для молодежи, организованные совместно с ветеранами.", content:"<p>Информация о месте проведения и расписание мероприятий.</p>"},
+      {id:5, title:"Благотворительный марафон", img:"https://picsum.photos/500/250?random=25", excerpt:"Спортивное мероприятие в поддержку ветеранов.", content:"<p>Сколько средств собрано и куда они направлены.</p>"},
+      {id:6, title:"День открытых дверей", img:"https://picsum.photos/500/250?random=26", excerpt:"Праздник для ветеранов и их семей.", content:"<p>Фото, участники и отзывы гостей.</p>"},
+      {id:7, title:"Фестиваль военной песни", img:"https://picsum.photos/500/250?random=27", excerpt:"Музыкальное событие, объединяющее поколения.", content:"<p>Выступления, победители, фотогалерея.</p>"},
+      {id:8, title:"Выставка военной техники", img:"https://picsum.photos/500/250?random=28", excerpt:"Редкие экспонаты, привезённые из музеев и частных коллекций.", content:"<p>Описание, фото и интервью с организаторами.</p>"},
+      {id:9, title:"День памяти погибших", img:"https://picsum.photos/500/250?random=29", excerpt:"Возложение цветов у памятника.", content:"<p>Репортаж, фото и благодарности.</p>"},
+      {id:10, title:"Конкурс патриотического рисунка", img:"https://picsum.photos/500/250?random=30", excerpt:"Дети рисуют героизм и подвиги предков.", content:"<p>Работы победителей и комментарии жюри.</p>"}
+    ];
+
+    // ======= Пагинация =======
+    const perPage = 3;
+    let currentPage = 1;
+
+    function renderEvents() {
+      const start = (currentPage - 1) * perPage;
+      const end = start + perPage;
+      const list = EVENTS_DATA.slice(start, end);
+      const container = document.getElementById("eventsContainer");
+
+      container.innerHTML = list.map(ev => `
+        <div class="event-card" onclick="openEvent(${ev.id})">
+          <img src="${ev.img}" alt="${ev.title}">
+          <div class="event-info">
+            <h3>${ev.title}</h3>
+            <p>${ev.excerpt}</p>
+          </div>
+        </div>
+      `).join("");
+
+      const totalPages = Math.ceil(EVENTS_DATA.length / perPage);
+      const pagination = document.getElementById("pagination");
+      pagination.innerHTML = `
+        <a href="#" onclick="changePage(${currentPage - 1})" class="prev" ${currentPage===1?'style="pointer-events:none;opacity:.5"':''}>&laquo;</a>
+        ${Array.from({length: totalPages}, (_,i)=>`<a href="#" ${i+1===currentPage?'class="active"':''} onclick="changePage(${i+1})">${i+1}</a>`).join("")}
+        <a href="#" onclick="changePage(${currentPage + 1})" class="next" ${currentPage===totalPages?'style="pointer-events:none;opacity:.5"':''}>&raquo;</a>
+      `;
+    }
+
+    function changePage(p) {
+      const totalPages = Math.ceil(EVENTS_DATA.length / perPage);
+      if (p < 1 || p > totalPages) return;
+      currentPage = p;
+      renderEvents();
+      window.scrollTo({top: 120, behavior: 'smooth'});
+    }
+
+
+
+// ======= Поиск (точно как в новостях) =======
+const searchInput = document.getElementById('searchInput');
+const searchSuggestions = document.getElementById('searchSuggestions');
+
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.trim().toLowerCase();
+  searchSuggestions.innerHTML = '';
+
+  if (query.length < 1) return;
+
+  const matches = EVENTS_DATA.filter(e =>
+    e.title.toLowerCase().includes(query) || e.excerpt.toLowerCase().includes(query)
+  );
+
+  if (matches.length === 0) {
+    const li = document.createElement('li');
+    li.textContent = 'Ничего не найдено';
+    searchSuggestions.appendChild(li);
+    return;
+  }
+
+  matches.slice(0, 8).forEach(m => {
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>${m.title}</strong> <small>${m.excerpt}</small>`;
+    li.addEventListener('mousedown', e => {
+      e.preventDefault(); // предотвращаем потерю фокуса и "спуск вниз"
+      window.location.href = `event.html?id=${m.id}`;
+    });
+    searchSuggestions.appendChild(li);
+  });
+});
+
+// ✅ При нажатии Enter — открыть первую найденную страницу мероприятия
+searchInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    const q = searchInput.value.trim().toLowerCase();
+    const found = EVENTS_DATA.find(e =>
+      e.title.toLowerCase().includes(q) || e.excerpt.toLowerCase().includes(q)
+    );
+    if (found) {
+      window.location.href = `event.html?id=${found.id}`;
+    }
+  }
+});
+
+// ✅ Скрыть подсказки при клике вне поиска
+document.addEventListener('click', e => {
+  if (!e.target.closest('.search-container')) searchSuggestions.innerHTML = '';
+});
+
+// === Восстановление состояния после возврата ===
+window.addEventListener("load", () => {
+  const savedPage = localStorage.getItem("eventsPage");
+  const savedScroll = localStorage.getItem("eventsScroll");
+  if (savedPage) {
+    currentPage = parseInt(savedPage);
+    renderEvents();
+    if (savedScroll) {
+      setTimeout(() => window.scrollTo(0, parseInt(savedScroll)), 100);
+    }
+    // Очистим, чтобы не мешало при следующем посещении
+    localStorage.removeItem("eventsPage");
+    localStorage.removeItem("eventsScroll");
+  }
+});
+
+// === Сохранение состояния перед уходом ===
+function openEvent(id) {
+  localStorage.setItem("eventsPage", currentPage);
+  localStorage.setItem("eventsScroll", window.scrollY);
+  window.location.href = `event.html?id=${id}`;
+}
+
+    renderEvents();
+  </script>-->
+  <script src="script.js"></script>
+</body>
+</html>

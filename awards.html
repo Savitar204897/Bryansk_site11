@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Награды — Ассоциация ветеранов</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- ✅ ФАВИКОНКА -->
+  <link rel="icon" type="image/png" href="emblem.png" />
+</head>
+<body>
+<body class="awards-page">
+
+  <!-- ШАПКА -->
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+  <a href="index.html" class="home-link">
+    <i class="fas fa-home"></i>
+    <span>На&nbsp;главную</span>
+  </a>
+</div>
+      <nav id="navbar">
+        <ul>
+          
+          <li><a href="news.html">Новости</a></li>
+          <li><a href="about.html">О ассоциации</a></li>
+          <li><a href="events.html">Мероприятия</a></li>
+          <li><a href="partners.html">Партнёры</a></li>
+          <li><a href="awards.html" class="active">Награды</a></li>
+        </ul>
+      </nav>
+      <div class="search-container">
+      <input id="searchInput" type="text" placeholder="Поиск..." />
+      <button id="searchBtn">🔍</button>
+      <ul id="searchSuggestions" class="suggestions"></ul>
+    </div>
+      <div class="burger" id="burger">☰</div>
+       <!-- Гамбургер-меню с анимацией -->
+<div class="hamburger-menu" id="hamburgerMenu">
+  <div class="hamburger-icon" id="hamburgerIcon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="hamburger-content" id="hamburgerContent">
+    <a href="literature.html">Литература</a>
+    <a href="music.html">Музыка</a>
+    <a href="news.html">Новости</a>
+    <a href="events.html">Мероприятия</a>
+    <a href="reports.html">Отчеты регионального отделения</a>
+    <a href="about.html">Информация для ветеранов</a>
+  </div>
+</div>
+    </div>
+  </header>
+
+  <!-- БАННЕР -->
+  <div class="page-banner"></div>
+  <!-- КОНТЕНТ -->
+  <main class="container fade-in">
+    <h1>Наши награды</h1>
+    <p>Ассоциация ветеранов гордится своими участниками и их достижениями. Здесь представлены некоторые из наград, полученных за активную деятельность и заслуги перед Родиной.</p>
+
+    <div id="awardsContainer" class="awards-grid"></div>
+
+    <div class="pagination fade-in" id="pagination"></div>
+  </main>
+
+  <!-- ФУТЕР -->
+  <footer>
+    <div class="container footer-content">
+      <p>© 2025 Ассоциация ветеранов. Все права защищены.</p>
+      <div class="social-links">
+      </div>
+    </div>
+  </footer>
+
+  <!--<script>
+    const AWARDS = [
+      {id:1, title:"Орден Мужества", img:"https://picsum.photos/500/300?random=41", desc:"Выдан за проявление отваги, самоотверженности и мужества при выполнении служебного долга.", year:"2022", content:"<p>Подробное описание награды, история и список награждённых.</p>"},
+      {id:2, title:"Медаль «За заслуги перед Отечеством»", img:"https://picsum.photos/500/300?random=42", desc:"Вручается за особые достижения в службе, вклад в общественное развитие и патриотическую работу.", year:"2023", content:"<p>История награды, фото церемонии вручения и имена награждённых.</p>"},
+      {id:3, title:"Почётная грамота Ассоциации", img:"https://picsum.photos/500/300?random=43", desc:"Признание заслуг активных участников ветеранского движения, проявивших инициативу и преданность делу.", year:"2024", content:"<p>Список лауреатов, цитаты из наградных речей.</p>"},
+      {id:4, title:"Орден Дружбы", img:"https://picsum.photos/500/300?random=44", desc:"За укрепление сотрудничества и взаимопомощи между организациями ветеранов.", year:"2020", content:"<p>Информация о вручении и фото награждённых.</p>"},
+      {id:5, title:"Медаль «За доблестный труд»", img:"https://picsum.photos/500/300?random=45", desc:"За многолетнюю службу и активное участие в общественных делах.", year:"2019", content:"<p>Описание, фото и благодарности от руководства.</p>"},
+      {id:6, title:"Награда «Патриот России»", img:"https://picsum.photos/500/300?random=46", desc:"Выдаётся за вклад в развитие патриотического воспитания.", year:"2021", content:"<p>Подробности и интервью награждённых.</p>"}
+    ];
+
+    const perPage = 3;
+    let currentPage = 1;
+// ✅ Если в URL есть параметр page — открываем эту страницу
+const urlParams = new URLSearchParams(window.location.search);
+const pageFromUrl = parseInt(urlParams.get("page"));
+if (!isNaN(pageFromUrl)) {
+  currentPage = pageFromUrl;
+}
+
+    // Отображение наград
+    function renderAwards(list = AWARDS) {
+      const start = (currentPage - 1) * perPage;
+      const end = start + perPage;
+      const current = list.slice(start, end);
+
+      document.getElementById("awardsContainer").innerHTML = current.map(a => `
+        <div class="award-card" onclick="openAward(${a.id})">
+          <img src="${a.img}" alt="${a.title}">
+          <div class="award-info">
+            <h3>${a.title}</h3>
+            <p>${a.desc}</p>
+            <span class="award-year">${a.year} год</span>
+          </div>
+        </div>
+      `).join("");
+
+      const totalPages = Math.ceil(list.length / perPage);
+      document.getElementById("pagination").innerHTML = `
+        <a href="#" onclick="changePage(${currentPage - 1})" ${currentPage===1?'style="pointer-events:none;opacity:.5"':''}>&laquo;</a>
+        ${Array.from({length: totalPages}, (_,i)=>`<a href="#" ${i+1===currentPage?'class="active"':''} onclick="changePage(${i+1})">${i+1}</a>`).join("")}
+        <a href="#" onclick="changePage(${currentPage + 1})" ${currentPage===totalPages?'style="pointer-events:none;opacity:.5"':''}>&raquo;</a>
+      `;
+    }
+
+    function changePage(p) {
+      const totalPages = Math.ceil(AWARDS.length / perPage);
+      if (p < 1 || p > totalPages) return;
+      currentPage = p;
+      renderAwards();
+    }
+
+   function openAward(id) {
+  // ✅ Сохраняем текущую страницу перед переходом
+  localStorage.setItem("lastAwardsPage", currentPage);
+  window.location.href = `award.html?id=${id}`;
+}
+
+
+    // Поиск с подсказками
+    const input = document.getElementById("searchInput");
+    const suggestions = document.getElementById("searchSuggestions");
+
+    input.addEventListener("input", () => {
+      const val = input.value.toLowerCase();
+      suggestions.innerHTML = "";
+      if (!val.trim()) return;
+      const matches = AWARDS.filter(a => a.title.toLowerCase().includes(val));
+      matches.forEach(m => {
+        const li = document.createElement("li");
+        li.textContent = m.title;
+        li.onclick = () => openAward(m.id);
+        suggestions.appendChild(li);
+      });
+    });
+// ✅ Проверяем, есть ли сохранённая страница
+const savedPage = parseInt(localStorage.getItem("lastAwardsPage"));
+if (!isNaN(savedPage)) {
+  currentPage = savedPage;
+}
+renderAwards();
+
+  </script>-->
+   <!-- СКРИПТ -->
+  <script src="script.js"></script>
+</body>
+</html>

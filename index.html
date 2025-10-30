@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ассоциация ветеранов</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- ✅ ФАВИКОНКА -->
+  <link rel="icon" type="image/png" href="emblem.png" />
+</head>
+<body class="index-page">
+
+  <!-- ШАПКА -->
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <a href="index.html" class="home-link">
+          <i class="fas fa-home"></i>
+          <span>Добро&nbsp;пожаловать</span>
+        </a>
+      </div>
+      <nav id="navbar">
+        <ul>
+          <li><a href="news.html">Новости</a></li>
+          <li><a href="about.html">О ассоциации</a></li>
+          <li><a href="events.html">Мероприятия</a></li>
+          <li><a href="partners.html">Партнёры</a></li>
+          <li><a href="awards.html">Награды</a></li>
+        </ul>
+      </nav>
+      <div class="search-container">
+        <input id="searchInput" type="text" placeholder="Поиск..." />
+        <button id="searchBtn">🔍</button>
+        <ul id="searchSuggestions" class="suggestions"></ul>
+      </div>
+      <div class="burger" id="burger">
+        <i class="fas fa-bars"></i>
+      </div>
+  <!-- Гамбургер-меню с анимацией -->
+<div class="hamburger-menu" id="hamburgerMenu">
+  <div class="hamburger-icon" id="hamburgerIcon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="hamburger-content" id="hamburgerContent">
+    <a href="literature.html">Литература</a>
+    <a href="music.html">Музыка</a>
+    <a href="news.html">Новости</a>
+    <a href="events.html">Мероприятия</a>
+    <a href="reports.html">Отчеты регионального отделения</a>
+    <a href="about.html">Информация для ветеранов</a>
+  </div>
+</div>
+    </div>
+  </header>
+
+  <div class="page-banner"></div>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <main class="container">
+    <h1 class="fade-in">Добро пожаловать в Ассоциацию ветеранов</h1>
+
+    <!-- Новый блок с картинкой слева и текстом справа -->
+    <div class="welcome-block fade-in">
+      <div class="welcome-image">
+        <img src="https://picsum.photos/300/200" alt="Ассоциация ветеранов">
+      </div>
+      <div class="welcome-text">
+        <p>Наша ассоциация объединяет людей, посвятивших себя служению Родине. Мы поддерживаем ветеранов, проводим мероприятия и создаём пространство для общения и взаимопомощи. Здесь вы найдете актуальные новости, информацию о наградах и мероприятиях, а также возможности присоединиться к нашим программам поддержки.</p>
+      </div>
+    </div>
+
+    <!-- Существующий текст -->
+    <p class="fade-in">Наша ассоциация объединяет людей, посвятивших себя служению Родине. Мы поддерживаем ветеранов, проводим мероприятия и создаём пространство для общения и взаимопомощи.</p>
+<div class="text-block fade-in">
+      <div class="text-image">
+        <img src="https://picsum.photos/300/200" alt="Ассоциация ветеранов">
+      </div>
+      <div class="text-text">
+    <h2 class="fade-in">Свежие новости</h2>
+    <p class="fade-in">Читайте последние события и объявления в разделе <a href="news.html">новостей</a>.</p>
+    </div>
+    </div>
+    <div class="text-block fade-in">
+      <div class="text-image">
+        <img src="https://picsum.photos/300/200" alt="Ассоциация ветеранов">
+      </div>
+      <div class="text-text">
+     <h3 class="fade-in">Наши мероприятия</h3>
+    <p class="fade-in">Читайте последние мероприятия и объявления в разделе <a href="events.html">мероприятия</a>.</p>
+    </div>
+    </div>
+  </main>
+
+  <!-- ФУТЕР -->
+  <footer>
+    <div class="container footer-content">
+      <p>© 2025 Ассоциация ветеранов. Все права защищены.</p>
+      <div class="social-links"></div>
+    </div>
+  </footer>
+
+  <!-- СКРИПТ -->
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Новости — Ассоциация ветеранов</title>
+  <link rel="stylesheet" href="style.css" />
+    <!-- ✅ ФАВИКОНКА -->
+  <link rel="icon" type="image/png" href="emblem.png" />
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+  <a href="index.html" class="home-link">
+    <i class="fas fa-home"></i>
+    <span>На&nbsp;главную</span>
+  </a>
+</div>
+      <nav id="navbar">
+        <ul>
+          
+          <li><a href="news.html" class="active">Новости</a></li>
+          <li><a href="about.html">О ассоциации</a></li>
+          <li><a href="events.html">Мероприятия</a></li>
+          <li><a href="partners.html">Партнёры</a></li>
+          <li><a href="awards.html">Награды</a></li>
+        </ul>
+      </nav>
+      <div class="search-container">
+      <input id="searchInput" type="text" placeholder="Поиск..." />
+      <button id="searchBtn">🔍</button>
+      <ul id="searchSuggestions" class="suggestions"></ul>
+    </div>
+      <div class="burger" id="burger">☰</div>
+       <!-- Гамбургер-меню с анимацией -->
+<div class="hamburger-menu" id="hamburgerMenu">
+  <div class="hamburger-icon" id="hamburgerIcon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="hamburger-content" id="hamburgerContent">
+    <a href="literature.html">Литература</a>
+    <a href="music.html">Музыка</a>
+    <a href="news.html">Новости</a>
+    <a href="events.html">Мероприятия</a>
+    <a href="reports.html">Отчеты регионального отделения</a>
+    <a href="about.html">Информация для ветеранов</a>
+  </div>
+</div>
+    </div>
+    
+  </header>
+<div class="page-banner"></div>
+  <main class="container" style="padding-top:24px;">
+    <h1>Новости Ассоциации ветеранов</h1>
+    <p>Последние события, встречи и инициативы.</p>
+
+    <div id="newsGrid" class="news-grid"></div>
+
+    <nav id="pagination" class="pagination" aria-label="Пагинация"></nav>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>© 2025 Ассоциация ветеранов. Все права защищены.</p>
+    </div>
+  </footer>
+
+ <!-- <script>
+  // ======= Данные новостей (макет) =======
+  const NEWS_DATA = [
+    {id:1, title:"Поздравление с Днём защитника Отечества", date:"2025-02-23", excerpt:"Ассоциация ветеранов поздравляет всех защитников с праздником! Мы гордимся вашими подвигами.", img:"emblem.png", content:"<p>Полный текст новости...</p>"},
+    {id:2, title:"Встреча ветеранов в Москве", date:"2025-05-18", excerpt:"Торжественная встреча ветеранов: вручение наград и памятная церемония.", img:"emblem.png", content:"<p>Подробный отчёт...</p>"},
+    {id:3, title:"Открытие нового центра помощи", date:"2025-07-01", excerpt:"Открылся новый центр поддержки ветеранов и их семей.", img:"emblem.png", content:"<p>Описание центра...</p>"},
+    {id:4, title:"Благотворительная ярмарка", date:"2025-08-12", excerpt:"Ярмарка собрала средства для программ помощи ветеранам.", img:"emblem.png", content:"<p>Как прошла ярмарка...</p>"},
+    {id:5, title:"Памятная акция у мемориала", date:"2025-09-05", excerpt:"Возложение цветов и минута молчания в честь погибших.", img:"emblem.png", content:"<p>Отчёт по акции...</p>"},
+    {id:6, title:"Фестиваль военной песни", date:"2025-10-10", excerpt:"Фестиваль с участием ветеранских и молодежных коллективов.", img:"emblem.png", content:"<p>Программа фестиваля...</p>"},
+    {id:7, title:"Волонтёрская программа поддержки", date:"2025-11-01", excerpt:"Набор волонтёров для помощи ветеранам и их семьям.", img:"emblem.png", content:"<p>Условия участия...</p>"},
+    {id:8, title:"Вручение медалей за доблесть", date:"2025-11-20", excerpt:"Торжественное награждение отличившихся ветеранов.", img:"emblem.png", content:"<p>Список награждённых...</p>"},
+    {id:9, title:"День открытых дверей", date:"2025-12-05", excerpt:"День открытых дверей для школьников и студентов.", img:"emblem.png", content:"<p>Программа мероприятия...</p>"},
+    {id:10, title:"Новогоднее поздравление", date:"2025-12-31", excerpt:"Ассоциация поздравляет всех ветеранов с Новым годом.", img:"emblem.png", content:"<p>Текст поздравления...</p>"},
+    {id:11, title:"Новогоднее поздравление", date:"2025-12-31", excerpt:"Ассоциация поздравляет всех ветеранов с Новым годом.", img:"emblem.png", content:"<p>Текст поздравления...</p>"},
+    {id:12, title:"або", date:"2025-12-31", excerpt:"Ассоциация поздравляет всех ветеранов с Новым годом.", img:"emblem.png", content:"<p>Текст поздравления...</p>"}
+  ];
+
+  // ======= Пагинация =======
+  const newsGrid = document.getElementById('newsGrid');
+  const pagination = document.getElementById('pagination');
+  const itemsPerPage = 3;
+  let currentPage = 1;
+  const totalPages = Math.ceil(NEWS_DATA.length / itemsPerPage);
+
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+// Если передан параметр page — открываем нужную страницу
+const urlParams = new URLSearchParams(window.location.search);
+const pageFromUrl = parseInt(urlParams.get("page"));
+if (!isNaN(pageFromUrl) && pageFromUrl >= 1 && pageFromUrl <= totalPages) {
+  currentPage = pageFromUrl;
+}
+
+  function renderPage(page=1){
+    newsGrid.innerHTML = '';
+    const start = (page-1)*itemsPerPage;
+    const slice = NEWS_DATA.slice(start, start+itemsPerPage);
+    slice.forEach(item=>{
+      const art = document.createElement('article');
+      art.className = 'news-card';
+      art.innerHTML = `
+        <a href="news-detail.html?id=${item.id}" class="news-link" data-page="${currentPage}">
+          <img src="${item.img}" alt="${escapeHtml(item.title)}">
+          <h3>${escapeHtml(item.title)}</h3>
+          <p class="meta">${escapeHtml(item.date)}</p>
+          <p>${escapeHtml(item.excerpt)}</p>
+        </a>
+      `;
+      newsGrid.appendChild(art);
+    });
+    renderPagination(page);
+  }
+// ======= Запуск =======
+renderPage(currentPage);
+
+// ✅ При клике на новость — запоминаем страницу
+newsGrid.addEventListener('click', (e) => {
+  const link = e.target.closest('.news-link');
+  if (link) {
+    localStorage.setItem('lastNewsPage', currentPage);
+  }
+});
+
+  function renderPagination(activePage){
+    pagination.innerHTML = '';
+    const prev = document.createElement('a');
+    prev.href = '#';
+    prev.textContent = '«';
+    prev.addEventListener('click', e=>{
+      e.preventDefault();
+      if(currentPage>1){ currentPage--; renderPage(currentPage); window.scrollTo({top:120, behavior:'smooth'}); }
+    });
+    pagination.appendChild(prev);
+
+    for(let i=1;i<=totalPages;i++){
+      const a = document.createElement('a');
+      a.href = '#';
+      a.textContent = i;
+      if(i===activePage) a.classList.add('active');
+      a.addEventListener('click', e=>{
+        e.preventDefault(); currentPage = i; renderPage(i); window.scrollTo({top:120, behavior:'smooth'});
+      });
+      pagination.appendChild(a);
+    }
+
+    const next = document.createElement('a');
+    next.href = '#';
+    next.textContent = '»';
+    next.addEventListener('click', e=>{
+      e.preventDefault();
+      if(currentPage<totalPages){ currentPage++; renderPage(currentPage); window.scrollTo({top:120, behavior:'smooth'}); }
+    });
+    pagination.appendChild(next);
+  }
+// ======= Поиск по всем новостям (глобальный, без конфликтов) =======
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
+  const suggestionsBox = document.getElementById("searchSuggestions");
+  if (!searchInput || !suggestionsBox) return;
+
+  function showSuggestions(query) {
+    suggestionsBox.innerHTML = "";
+    const q = query.trim().toLowerCase();
+    if (!q) {
+      suggestionsBox.style.display = "none";
+      return;
+    }
+
+    // Ищем по всему NEWS_DATA, а не по slice
+    const matches = NEWS_DATA.filter(item =>
+      item.title.toLowerCase().includes(q) ||
+      item.excerpt.toLowerCase().includes(q)
+    );
+
+    if (matches.length === 0) {
+      const li = document.createElement("li");
+      li.classList.add("no-result");
+      li.textContent = "Совпадений не найдено";
+      suggestionsBox.appendChild(li);
+      suggestionsBox.style.display = "block";
+      return;
+    }
+
+    matches.slice(0, 8).forEach(item => {
+      const li = document.createElement("li");
+      li.innerHTML = `<strong>${item.title}</strong> <small>(${item.date})</small>`;
+      li.addEventListener("click", () => {
+        window.location.href = `news-detail.html?id=${item.id}`;
+      });
+      suggestionsBox.appendChild(li);
+    });
+
+    suggestionsBox.style.display = "block";
+  }
+
+  // Обработка ввода
+  let timer = null;
+  searchInput.addEventListener("input", () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => showSuggestions(searchInput.value), 150);
+  });
+
+  // При нажатии Enter — открыть первую найденную новость
+  searchInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const q = searchInput.value.trim().toLowerCase();
+      const found = NEWS_DATA.find(item =>
+        item.title.toLowerCase().includes(q) ||
+        item.excerpt.toLowerCase().includes(q)
+      );
+      if (found) {
+        window.location.href = `news-detail.html?id=${found.id}`;
+      }
+    }
+  });
+
+  // Скрытие подсказок при клике вне
+  document.addEventListener("click", e => {
+    if (!e.target.closest(".search-container")) {
+      suggestionsBox.style.display = "none";
+    }
+  });
+});
+
+
+  // ======= Запуск =======
+  renderPage(currentPage);
+</script>
+  СКРИПТ -->
+  <script src="script.js"></script>
+</body>
+</html>
