@@ -74,8 +74,19 @@
   </footer>
   <!-- СКРИПТ -->
   <script src="script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const burger = document.getElementById("burger");
+  const navList = document.querySelector("nav ul");
+
+  burger.addEventListener("click", () => {
+    navList.classList.toggle("show");
+  });
+});
+</script>
 
 </body>
 </html>
+
 
 
