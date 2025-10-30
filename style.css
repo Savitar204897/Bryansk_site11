@@ -1,893 +1,4 @@
-/* === Фикс для футера на всех страницах === */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* тело растягивается на всю высоту экрана */
-}
-
-main {
-  flex: 1; /* занимает всё оставшееся место между хедером и футером */
-}
-
-/* === Основной футер === */
-footer {
-  background: #004080;
-  color: white;
-  text-align: center;
-  padding: 18px;
-  font-size: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* === ОБЩИЕ НАСТРОЙКИ === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f4f6f9;
-  color: #222;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* === ШАПКА === */
-header {
-  background: linear-gradient(90deg, #0b3c8c, #1a58d3);
-  color: white;
-  padding: 15px 0;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-placeholder {
-  width: 120px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 6px;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-/* === МЕНЮ === */
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 8px 14px;
-  border-radius: 6px;
-  transition: 0.3s;
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-  background: white;
-  color: #1a58d3;
-}
-
-/* === БУРГЕР === */
-.burger {
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-/* ===== ПОИСК ===== */
-.search-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.search-container input {
-  flex: 1;
-  padding: 10px 14px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  outline: none;
-  transition: 0.2s;
-}
-
-.search-container input:focus {
-  border-color: #004aad;
-  box-shadow: 0 0 5px rgba(0, 74, 173, 0.3);
-}
-
-.search-container button {
-  background: #004aad;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 14px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.search-container button:hover {
-  background: #003580;
-}
-
-/* ===== ВЫПАДАЮЩИЕ ПОДСКАЗКИ ===== */
-.suggestions {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  top: 110%;
-  left: 0;
-  right: 0;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  z-index: 20;
-  display: none;
-  max-height: 220px;
-  overflow-y: auto;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.suggestions li {
-  padding: 10px 12px;
-  cursor: pointer;
-  border-bottom: 1px solid #eee;
-  font-size: 15px;
-  color: #333;
-}
-
-.suggestions li:hover {
-  background: #f4f7ff;
-}
-
-/* ===== ВЫДЕЛЕНИЕ НАЙДЕННОГО ЭЛЕМЕНТА ===== */
-.highlight {
-  background: #fff3a0;
-  transition: background 0.8s ease;
-}
-
-
-/* === ОСНОВНОЙ КОНТЕНТ === */
-main {
-  margin-top: 30px;
-  padding: 40px 0;
-}
-
-h1, h2, h3 {
-  color: #0b3c8c;
-  margin-bottom: 15px;
-}
-
-a {
-  color: #1a58d3;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* === ПАГИНАЦИЯ === */
-.pagination {
-  margin-top: 40px;
-  text-align: center;
-}
-
-.pagination a {
-  color: #1a58d3;
-  padding: 10px 15px;
-  text-decoration: none;
-  border: 1px solid #1a58d3;
-  border-radius: 6px;
-  margin: 0 3px;
-  transition: 0.3s;
-}
-
-.pagination a:hover {
-  background: #1a58d3;
-  color: white;
-}
-
-.pagination a.active {
-  background: #1a58d3;
-  color: white;
-}
-
-/* === ФУТЕР === */
-footer {
-  background: #0b3c8c;
-  color: white;
-  padding: 5px 0;
-  text-align: center;
-  margin-top: 180px;
-}
-/* === ФУТЕР2 === */
-.footer-extra {
-  background: #004080;
-  color: white;
-  text-align: center;
-  padding: 30px;
-  font-size: 1rem;
-}
-.social-links {
-  margin-top: 10px;
-}
-
-.social-links a {
-  color: white;
-  margin: 0 10px;
-  font-size: 22px;
-  transition: 0.3s;
-}
-
-.social-links a:hover {
-  color: #ff4b4b;
-}
-
-/* === АНИМАЦИИ === */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s forwards;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* === АДАПТИВНОСТЬ === */
-@media (max-width: 768px) {
-  nav ul {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 65px;
-    right: 0;
-    background: #0b3c8c;
-    width: 200px;
-    padding: 20px;
-    border-radius: 0 0 0 10px;
-  }
-
-  nav ul.show {
-    display: flex;
-  }
-
-  .burger {
-    display: block;
-  }
-}
-/* === КАРТОЧКИ НОВОСТЕЙ === */
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
-}
-
-.news-card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: 0.3s;
-}
-
-.news-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-}
-
-.news-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.news-card h3 {
-  color: #0b3c8c;
-  font-size: 18px;
-  margin: 15px;
-}
-
-.news-card p {
-  margin: 0 15px 15px;
-}
-
-.news-card .btn {
-  display: inline-block;
-  background: #1a58d3;
-  color: white;
-  margin: 0 15px 20px;
-  padding: 8px 14px;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.news-card .btn:hover {
-  background: #0b3c8c;
-}
-/* === О АССОЦИАЦИИ === */
-.about-content {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 25px;
-  margin: 30px 0;
-}
-
-.about-img {
-  flex: 1 1 400px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.about-text {
-  flex: 1 1 400px;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-/* === КОНТАКТЫ === */
-.contacts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.contact-card {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #1a58d3;
-  color: white;
-  text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  transition: 0.3s;
-  font-size: 16px;
-}
-
-.contact-card i {
-  font-size: 22px;
-}
-
-.contact-card:hover {
-  background: #0b3c8c;
-}
-/* === МЕРОПРИЯТИЯ === */
-.events-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
-}
-
-.event-card {
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  transition: 0.3s;
-}
-
-.event-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-}
-
-.event-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
-.event-info {
-  padding: 15px;
-}
-
-.event-info h3 {
-  color: #0b3c8c;
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-/* === ПАРТНЁРЫ === */
-.partners-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
-}
-
-.partner-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  transition: 0.3s;
-  text-align: center;
-}
-
-.partner-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-}
-
-.partner-card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-}
-
-.partner-info {
-  padding: 20px;
-}
-
-.partner-info h3 {
-  color: #0b3c8c;
-  margin-bottom: 10px;
-}
-
-.partner-btn {
-  display: inline-block;
-  background: #1a58d3;
-  color: white;
-  padding: 10px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.partner-btn:hover {
-  background: #0b3c8c;
-}
-/* === НАГРАДЫ === */
-.awards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
-}
-
-.award-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  transition: 0.3s;
-}
-
-.award-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-}
-
-.award-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
-.award-info {
-  padding: 18px;
-}
-
-.award-info h3 {
-  color: #0b3c8c;
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-
-.award-info p {
-  font-size: 15px;
-  margin-bottom: 8px;
-}
-
-.award-year {
-  display: inline-block;
-  font-weight: bold;
-  color: #555;
-  background: #f2f4f8;
-  padding: 5px 10px;
-  border-radius: 6px;
-  font-size: 14px;
-}
-/* article styling */
-.article-container { margin: 40px auto; max-width: 900px; }
-.article-card { background:white; padding:18px; border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,0.06); }
-.article-header h1 { margin:0 0 8px; color:#0b3c8c; }
-.article-meta { color:#6b7280; margin-bottom:12px; }
-.article-image img { width:100%; height:auto; border-radius:8px; margin-bottom:14px; object-fit:cover; }
-.article-body { color:#222; line-height:1.7; }
-.article-actions { margin-top:18px; display:flex; gap:10px; }
-mark { background:#ffd54f; padding:0 2px; border-radius:3px; }
-.s-date { font-size:12px; color:#666; margin-left:8px; }
-.s-title { font-weight:600; }
-.s-excerpt { font-size:13px; color:#555; margin-top:4px; }
-.suggestions li.focused { background:#eef3ff; }
-.suggestions li { display:block; padding:10px; border-bottom:1px solid #f2f2f2; }
-.suggestions li.no-result { padding:10px; color:#888; border-bottom:none; }
-/* === Исправление наложения контента под фиксированный header === */
-main {
-  padding-top: 110px; /* подстраиваем под высоту шапки */
-}
-
-@media (max-width: 768px) {
-  main {
-    padding-top: 130px; /* для мобильных, где меню выше */
-  }
-}
-/* === ФИКС: текст не залезает под меню === */
-body {
-  padding-top: 100px; /* регулирует высоту под шапку */
-}
-
-@media (max-width: 768px) {
-  body {
-    padding-top: 120px; /* чуть больше для мобильных */
-  }
-}
-/* === КНОПКА "НАЗАД К НОВОСТЯМ" === */
-.btn {
-  display: inline-block;
-  padding: 10px 18px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.25s ease;
-}
-
-.btn-outline {
-  border: 2px solid #1e64d0; /* синий из шапки */
-  color: #1e64d0;
-  background: transparent;
-}
-
-.btn-outline:hover {
-  background: #1e64d0;
-  color: white;
-  box-shadow: 0 4px 10px rgba(30,100,208,0.3);
-  transform: translateY(-2px);
-}
-
-/* Чуть больше отступов под кнопку */
-.article-body,
-.meta {
-  margin-top: 16px;
-}
-
-.btn-outline:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(30,100,208,0.2);
-}
-/* === БАННЕР ПОД МЕНЮ === */
-.page-banner {
-  width: 100%;
-  height: 70px; /* можно поменять под свою картинку */
-  background: url("C:\Users\Serov-VA\Desktop\Bryansk_site1/emblem.jpg") center/cover no-repeat;
-  border-bottom: 3px solid #1e64d0;
-  box-shadow: inset 0 -60px 60px rgba(0, 0, 0, 0.2);
-}
-
-/* адаптация для телефонов */
-@media (max-width: 768px) {
-  .page-banner {
-    height: 150px;
-  }
-}
-/* === КРАСИВАЯ КНОПКА "НА ГЛАВНУЮ" === */
-.home-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-  padding: 10px 18px;
-  border-radius: 30px;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-}
-
-.home-link i {
-  font-size: 18px;
-}
-
-.home-link:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-}
-
-.home-link:active {
-  transform: translateY(1px);
-}
-
-/* адаптивность */
-@media (max-width: 600px) {
-  .home-link {
-    font-size: 14px;
-    padding: 8px 14px;
-  }
-  .home-link i {
-    font-size: 16px;
-  }
-}
-/* --- Оформление новости --- */
-.article-wrapper {
-  display: flex;
-  gap: 24px;
-  align-items: flex-start;
-  margin-top: 16px;
-  flex-wrap: wrap;
-}
-
-.article-image {
-  flex: 1 1 45%;
-  min-width: 280px;
-}
-
-.article-image img {
-  width: 100%;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.article-content {
-  flex: 1 1 50%;
-  min-width: 280px;
-}
-
-.article-content h1 {
-  font-size: 1.8rem;
-  margin-bottom: 8px;
-  color: #222;
-}
-
-.article-content .meta {
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 16px;
-}
-
-.article-body {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #333;
-}
-
-/* --- Мобильная адаптация --- */
-@media (max-width: 768px) {
-  .article-wrapper {
-    flex-direction: column;
-  }
-  .article-image,
-  .article-content {
-    flex: 1 1 100%;
-  }
-  .article-content h1 {
-    font-size: 1.5rem;
-    text-align: center;
-  }
-}
-/* ---------- Общая шапка ---------- */
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-/* ---------- Поиск в шапке ---------- */
-.search-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.search-container input {
-  padding: 6px 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  font-size: 0.95rem;
-  width: 180px;
-  transition: 0.3s;
-}
-
-.search-container input:focus {
-  outline: none;
-  border-color: #004080;
-  box-shadow: 0 0 5px rgba(0,64,128,0.4);
-  width: 220px;
-}
-
-.search-container button {
-  background: #004080;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 6px 10px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: 0.3s;
-}
-
-.search-container button:hover {
-  background: #0055cc;
-}
-
-/* ---------- Выпадающие подсказки ---------- */
-.suggestions {
-  position: absolute;
-  top: 110%;
-  left: 0;
-  right: 0;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  list-style: none;
-  padding: 4px 0;
-  margin: 0;
-  max-height: 220px;
-  overflow-y: auto;
-  z-index: 999;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.suggestions li {
-  padding: 6px 10px;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-.suggestions li:hover {
-  background: #f0f4ff;
-}
-/* === ФИКС ПОЛОЖЕНИЯ ФУТЕРА === */
-html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-}
-
-/* Основной футер */
-footer {
-  background: #0b3c8c;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  margin-top: auto; /* вместо фиксированного отступа */
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
-}
-
-/* Второй футер (если будет использоваться) */
-.footer-extra {
-  background: #004080;
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 1rem;
-  margin-top: 0;
-}
-/* Плавное появление */
-.fade-in {
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Карточки */
-.news-card,
-.event-card,
-.award-card,
-.partner-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.news-card.hovered,
-.event-card.hovered,
-.award-card.hovered,
-.partner-card.hovered {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-}
-
-/* Подсветка при поиске */
-.highlight {
-  animation: highlightFade 1.5s ease;
-}
-@keyframes highlightFade {
-  0% { background-color: #ffff99; }
-  100% { background-color: transparent; }
-}
-/* Плавное появление шапки и футера */
-header, footer {
-  opacity: 0;
-  transform: translateY(0);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-/* Когда уже видно */
-header.visible, footer.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Первый вход — плавное появление сверху/снизу */
-header.slide-down {
-  animation: slideDown 0.8s ease forwards;
-}
-footer.slide-up {
-  animation: slideUp 0.8s ease forwards;
-}
-
-/* Анимации */
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-25px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(25px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-/* --- Только для главной страницы --- */
+/* --- ТОЛЬКО ДЛЯ ГЛАВНОЙ СТРАНИЦЫ --- */
 body.index-page .page-banner {
   margin: 0;
   padding: 0;
@@ -908,7 +19,8 @@ body.index-page main.container {
 body.index-page main h1 {
   margin-top: 1.2rem;
 }
-/* --- Только для страницы "О Ассоциации" --- */
+
+/* --- ТОЛЬКО ДЛЯ СТРАНИЦЫ "О АССОЦИАЦИИ" --- */
 body.about-page .page-banner {
   margin: 0;
   padding: 0;
@@ -929,19 +41,20 @@ body.about-page main.container {
 body.about-page main h1 {
   margin-top: 1.2rem;
 }
-/* --- Только для страницы "Мероприятия" --- */
+
+/* --- ТОЛЬКО ДЛЯ СТРАНИЦЫ "МЕРОПРИЯТИЯ" --- */
 body.events-page .page-banner {
   margin: 0;
   padding: 0;
 }
 
-/* Убираем отступ между баннером и контентом */
+/* Убираем отступ между баннером и основным контентом */
 body.events-page main.container {
   margin-top: 0;
   padding-top: 0;
 }
 
-/* Если баннер идёт сразу перед main */
+/* На случай, если баннер стоит прямо перед main */
 .page-banner + main.container {
   margin-top: 0;
 }
@@ -950,7 +63,8 @@ body.events-page main.container {
 body.events-page main h1 {
   margin-top: 1.2rem;
 }
-/* --- Только для страницы "Партнёры" --- */
+
+/* --- ТОЛЬКО ДЛЯ СТРАНИЦЫ "ПАРТНЁРЫ" --- */
 body.partners-page .page-banner {
   margin: 0;
   padding: 0;
@@ -971,7 +85,8 @@ body.partners-page main.container {
 body.partners-page main h1 {
   margin-top: 1.2rem;
 }
-/* --- Только для страницы "Награды" --- */
+
+/* --- ТОЛЬКО ДЛЯ СТРАНИЦЫ "НАГРАДЫ" --- */
 body.awards-page .page-banner {
   margin: 0;
   padding: 0;
@@ -992,157 +107,8 @@ body.awards-page main.container {
 body.awards-page main h1 {
   margin-top: 1.2rem;
 }
-.welcome-block {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
 
-.welcome-block .welcome-image {
-  flex: 0 0 300px;
-}
-
-.welcome-block .welcome-image img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.welcome-block .welcome-text {
-  flex: 1;
-}
-
-@media(max-width: 768px) {
-  .welcome-block {
-    flex-direction: column;
-    text-align: center;
-  }
-  .welcome-block .welcome-image {
-    flex: none;
-    width: 100%;
-  }
-  .welcome-block .welcome-text {
-    flex: none;
-  }
-}
-.text-block {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.text-block .text-image {
-  flex: 0 0 200px;
-}
-
-.text-block .text-image img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.text-block .text-text {
-  flex: 1;
-}
-
-@media(max-width: 600px) {
-  .text-block {
-    flex-direction: column;
-    text-align: center;
-  }
-  .text-block .text-image {
-    flex: none;
-    width: 100%;
-  }
-  .text-block .text-text {
-    flex: none;
-  }
-}
-/* Гамбургер-меню с анимацией */
-.hamburger-menu {
-  position: relative;
-  display: inline-block;
-  margin: 20px 0;
-  z-index: 200;
-}
-
-.hamburger-icon {
-  width: 30px;
-  height: 22px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.hamburger-icon span {
-  display: block;
-  height: 4px;
-  background: #e3e2e2;
-  border-radius: 2px;
-  transition: 0.3s;
-}
-
-/* Меню */
-.hamburger-content {
-  display: none;
-  position: absolute;
-  top: 28px;
-  left: 0;
-  background: white;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  overflow: hidden;
-  z-index: 100;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.hamburger-content a {
-  display: block;
-  padding: 12px 18px;
-  color: #1a58d3;
-  text-decoration: none;
-  transition: 0.2s;
-}
-
-.hamburger-content a:hover {
-  background: #f0f4ff;
-}
-
-/* Класс активного состояния */
-.hamburger-menu.active .hamburger-content {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Анимация крестика */
-.hamburger-menu.active .hamburger-icon span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger-menu.active .hamburger-icon span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger-menu.active .hamburger-icon span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Мобильная адаптация */
-@media (max-width: 768px) {
-  .hamburger-content {
-    position: static;
-    width: 100%;
-    transform: translateY(0);
-  }
-}
-/* --- Только для страницы "Литература" --- */
+/* --- ТОЛЬКО ДЛЯ СТРАНИЦЫ "ЛИТЕРАТУРА" --- */
 body.literature-page .page-banner {
   margin: 0;
   padding: 0;
@@ -1164,41 +130,7 @@ body.literature-page main h1 {
   margin-top: 1.2rem;
 }
 
-/* Блок приветствия/описания */
-.welcome-block {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.welcome-block .welcome-image {
-  flex: 0 0 300px;
-}
-
-.welcome-block .welcome-image img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.welcome-block .welcome-text {
-  flex: 1;
-}
-
-@media(max-width: 768px) {
-  .welcome-block {
-    flex-direction: column;
-    text-align: center;
-  }
-  .welcome-block .welcome-image {
-    flex: none;
-    width: 100%;
-  }
-  .welcome-block .welcome-text {
-    flex: none;
-  }
-}
+/* --- ТОЛЬКО ДЛЯ СТРАНИЦЫ "МУЗЫКА" --- */
 body.music-page main {
   padding-top: 120px; /* под фиксированный header */
 }
@@ -1234,4 +166,188 @@ body.music-page main {
   align-self: flex-start;
 }
 
+/* --- АДАПТИВНЫЙ ДИЗАЙН ДЛЯ ВСЕХ СТРАНИЦ --- */
 
+/* Адаптация баннера */
+.page-banner {
+  width: 100%;
+  height: 70px;
+  background: url("C:/Users/Serov-VA/Desktop/Bryansk_site1/emblem.jpg") center/cover no-repeat;
+  border-bottom: 3px solid #1e64d0;
+}
+
+@media (max-width: 768px) {
+  .page-banner {
+    height: 150px;
+  }
+}
+
+/* Адаптация для карточек */
+.news-card,
+.event-card,
+.award-card,
+.partner-card,
+.music-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card img,
+.event-card img,
+.award-card img,
+.partner-card img,
+.music-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Адаптация для гамбургер-меню */
+.hamburger-content {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  width: 200px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hamburger-menu.active .hamburger-content {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .hamburger-content {
+    position: static;
+    width: 100%;
+  }
+}
+
+/* Флексбоксы для всех блоков */
+.welcome-block,
+.text-block,
+.about-content,
+.article-wrapper {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* Позволяет блокам переноситься на новые строки */
+}
+
+.welcome-block .welcome-image,
+.text-block .text-image,
+.about-img,
+.article-image {
+  flex: 0 0 300px;
+}
+
+.welcome-block .welcome-text,
+.text-block .text-text,
+.about-text,
+.article-content {
+  flex: 1;
+}
+
+/* Адаптация карточек новостей, мероприятий, партнёров и наград */
+.news-grid,
+.events-grid,
+.partners-grid,
+.awards-grid,
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Изображения адаптивные */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Флексбоксы для поиска и шапки */
+.header-content,
+.search-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Гамбургер-меню мобильное */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 65px;
+    right: 0;
+    background: #0b3c8c;
+    width: 200px;
+    padding: 20px;
+    border-radius: 0 0 0 10px;
+  }
+  nav ul.show {
+    display: flex;
+  }
+  .burger {
+    display: block;
+  }
+
+  /* Флекс блоки меняют направление на колонку */
+  .welcome-block,
+  .text-block,
+  .about-content,
+  .article-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .welcome-block .welcome-image,
+  .text-block .text-image,
+  .about-img,
+  .article-image {
+    flex: none;
+    width: 100%;
+  }
+
+  .welcome-block .welcome-text,
+  .text-block .text-text,
+  .about-text,
+  .article-content {
+    flex: none;
+    width: 100%;
+  }
+
+  /* Поиск в шапке адаптивный */
+  .search-container input {
+    width: 60%;
+  }
+}
+
+/* Мелкие экраны телефонов */
+@media (max-width: 480px) {
+  header {
+    padding: 10px 0;
+  }
+  .search-container input {
+    width: 100%;
+  }
+  .home-link {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+}
