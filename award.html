@@ -76,113 +76,72 @@
 </footer>
 
 <script>
-    // ======== ДАННЫЕ НАГРАД (только свои изображения) ========
-    const AWARDS = [
-      {
-        id: 1,
-        title: "Орден Мужества",
-        content: "<p>История награды и фотографии церемонии вручения.</p>",
-        images: ["img/emblem.png", "img/award1-2.jpg"]
-      },
-      {
-        id: 2,
-        title: "Медаль «За заслуги перед Отечеством»",
-        content: "<p>Описание награждения и имена лауреатов.</p>",
-        images: ["img/award2-1.jpg"]
-      },
-      {
-        id: 3,
-        title: "Почётная грамота Ассоциации",
-        content: "<p>Информация о награждённых и цитаты из выступлений.</p>",
-        images: ["img/award3-1.jpg", "img/award3-2.jpg"]
-      },
-      {
-        id: 4,
-        title: "Орден Дружбы",
-        content: "<p>Фото награждённых и история этой награды.</p>",
-        images: ["img/award4-1.jpg"]
-      },
-      {
-        id: 5,
-        title: "Медаль «За доблестный труд»",
-        content: "<p>Отчёт о церемонии и благодарственные слова.</p>",
-        images: ["img/award5-1.jpg", "img/award5-2.jpg"]
-      },
-      {
-        id: 6,
-        title: "Награда «Патриот России»",
-        content: "<p>Истории героев и интервью награждённых.</p>",
-        images: ["img/award6-1.jpg"]
-      }
-    ];
+  const AWARDS = [
+    {id:1, title:"Орден Мужества", content:"<p>История награды и фотографии церемонии.</p>", images:["https://picsum.photos/900/420?random=41","https://picsum.photos/900/420?random=51"]},
+    {id:2, title:"Медаль «За заслуги перед Отечеством»", content:"<p>Описание награждения и имена лауреатов.</p>", images:["https://picsum.photos/900/420?random=42","https://picsum.photos/900/420?random=52"]},
+    {id:3, title:"Почётная грамота Ассоциации", content:"<p>Информация о награждённых и цитаты из выступлений.</p>", images:["https://picsum.photos/900/420?random=43"]},
+    {id:4, title:"Орден Дружбы", content:"<p>Фото награждённых и история награды.</p>", images:["https://picsum.photos/900/420?random=44"]},
+    {id:5, title:"Медаль «За доблестный труд»", content:"<p>Отчёт о церемонии и благодарственные слова.</p>", images:["https://picsum.photos/900/420?random=45"]},
+    {id:6, title:"Награда «Патриот России»", content:"<p>Истории героев и интервью награждённых.</p>", images:["https://picsum.photos/900/420?random=46"]}
+  ];
 
-    // ======== Получаем id из URL ========
-    const params = new URLSearchParams(window.location.search);
-    const id = parseInt(params.get("id"));
-    const award = AWARDS.find(a => a.id === id);
-    const container = document.getElementById("awardContainer");
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"));
+  const award = AWARDS.find(a => a.id === id);
+  const container = document.getElementById("awardContainer");
 
-    function escapeHtml(s){
-      return String(s).replace(/[&<>"']/g, c=>({
-        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-      }[c]));
-    }
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
 
-    // ======== Отображаем выбранную награду ========
-    if(!award){
-      container.innerHTML = "<p>Награда не найдена.</p>";
-    } else {
-      let imgsHtml = award.images.map(
-        (src,i)=>`<img src="${escapeHtml(src)}" class="${i===0?'active':''}" alt="${escapeHtml(award.title)}">`
-      ).join("");
+  if(!award){
+    container.innerHTML = "<p>Награда не найдена.</p>";
+  } else {
+    let imgsHtml = award.images.map((src,i)=>`<img src="${escapeHtml(src)}" class="${i===0?'active':''}" alt="${escapeHtml(award.title)}">`).join("");
 
-      container.innerHTML = `
-        <a href="#" class="btn btn-outline" id="backToAwards">&larr; Назад к наградам</a>
-        <div class="article-wrapper" style="margin-top:12px;">
-          <div class="article-image" id="articleImage">
-            ${imgsHtml}
-            ${award.images.length > 1 ? `
-              <button class="prev-slide">&#10094;</button>
-              <button class="next-slide">&#10095;</button>` : ""}
-          </div>
-          <div class="article-content">
-            <h1>${escapeHtml(award.title)}</h1>
-            <div class="article-body">${award.content}</div>
-          </div>
+    container.innerHTML = `
+      <a href="#" class="btn btn-outline" id="backToAwards">&larr; Назад к наградам</a>
+      <div class="article-wrapper" style="margin-top:12px;">
+        <div class="article-image" id="articleImage">
+          ${imgsHtml}
+          <button class="prev-slide">&#10094;</button>
+          <button class="next-slide">&#10095;</button>
         </div>
-      `;
+        <div class="article-content">
+          <h1>${escapeHtml(award.title)}</h1>
+          <div class="article-body">${award.content}</div>
+        </div>
+      </div>
+    `;
 
-      // ======== Слайд-шоу ========
-      const imgs = document.querySelectorAll("#articleImage img");
-      if(imgs.length > 1){
-        const prevBtn = document.querySelector(".prev-slide");
-        const nextBtn = document.querySelector(".next-slide");
-        let current = 0;
+    // Слайд-шоу
+    const imgs = document.querySelectorAll("#articleImage img");
+    const prevBtn = document.querySelector(".prev-slide");
+    const nextBtn = document.querySelector(".next-slide");
+    let current = 0;
 
-        function showSlide(n){
-          imgs[current].classList.remove("active");
-          current = (n + imgs.length) % imgs.length;
-          imgs[current].classList.add("active");
-        }
-
-        prevBtn.addEventListener("click", ()=>showSlide(current-1));
-        nextBtn.addEventListener("click", ()=>showSlide(current+1));
-        setInterval(()=>showSlide(current+1), 5000);
-      }
+    function showSlide(n){
+      imgs[current].classList.remove("active");
+      current = (n + imgs.length) % imgs.length;
+      imgs[current].classList.add("active");
     }
 
-    // ======== Кнопка "Назад к наградам" ========
-    document.addEventListener("click", (ev) => {
-      const t = ev.target;
-      if (t && t.id === "backToAwards") {
-        ev.preventDefault();
-        const savedPage = localStorage.getItem("awardsPage");
-        let url = "awards.html";
-        if(savedPage){ url += `?page=${encodeURIComponent(savedPage)}`; }
-        window.location.href = url;
-      }
-    });
-  </script>
-  <script src="script.js"></script>
+    prevBtn.addEventListener("click", ()=>showSlide(current-1));
+    nextBtn.addEventListener("click", ()=>showSlide(current+1));
+    setInterval(()=>showSlide(current+1),5000);
+  }
+
+  // Кнопка "Назад к наградам"
+  document.addEventListener("click", (ev) => {
+    const t = ev.target;
+    if (t && t.id === "backToAwards") {
+      ev.preventDefault();
+      const savedPage = localStorage.getItem("lastAwardsPage") || 1;
+      let url = `awards.html?page=${savedPage}`;
+      window.location.href = url;
+    }
+  });
+</script>
+<script src="script.js"></script>
 </body>
 </html>
