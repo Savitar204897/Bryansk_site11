@@ -205,3 +205,14 @@ const hamburgerContent = document.getElementById("hamburgerContent");
 hamburgerIcon.addEventListener("click", () => {
   hamburgerMenu.classList.toggle("active");
 });
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const burger = document.querySelector(".burger");
+  const navList = document.querySelector("nav ul");
+
+  burger.addEventListener("click", () => {
+    navList.classList.toggle("show");
+  });
+});
+</script>
+
